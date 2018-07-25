@@ -64,12 +64,6 @@ const formConfig = {
           }
         }
       }
-    },
-    secondSection: {
-      title: 'Second Section',
-      pages: {
-
-      }
     }
   }
 };
