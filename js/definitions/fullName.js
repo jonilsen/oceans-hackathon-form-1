@@ -1,38 +1,29 @@
-const suffixes = [
-  'Jr.',
-  'Sr.',
-  'II',
-  'III',
-  'IV'
-];
+const suffixes = ["Jr.", "Sr.", "II", "III", "IV"];
 
 const schema = {
-  type: 'object',
+  type: "object",
   properties: {
+    last: {
+      type: "string",
+      pattern: "^.*\\S.*",
+      minLength: 2,
+      maxLength: 30
+    },
     first: {
-      type: 'string',
-      pattern: '^.*\\S.*',
+      type: "string",
+      pattern: "^.*\\S.*",
       minLength: 1,
       maxLength: 30
     },
     middle: {
-      type: 'string'
-    },
-    last: {
-      type: 'string',
-      pattern: '^.*\\S.*',
-      minLength: 2,
-      maxLength: 30
+      type: "string"
     },
     suffix: {
-      type: 'string',
-      'enum': suffixes
-    },
+      type: "string",
+      enum: suffixes
+    }
   },
-  required: [
-    'first',
-    'last'
-  ]
+  required: ["first", "last"]
 };
 
 export default schema;
