@@ -45,7 +45,7 @@ const formConfig = {
             },
             emailAddress: {
               "ui:widget": "email",
-              "ui:title": "Email address"
+              "ui:title": "E-mail address"
             },
             hasMobilePhone: {
               "ui:title":

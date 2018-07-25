@@ -1,6 +1,6 @@
-import React from 'react';
-import ProgressButton from 'us-forms-system/lib/js/components/ProgressButton';
-import FormTitle from 'us-forms-system/lib/js/components/FormTitle';
+import React from "react";
+import ProgressButton from "us-forms-system/lib/js/components/ProgressButton";
+import FormTitle from "us-forms-system/lib/js/components/FormTitle";
 
 class Introduction extends React.Component {
   constructor(props) {
@@ -11,18 +11,20 @@ class Introduction extends React.Component {
   startForm() {
     const firstPage = this.props.route.pageList[1].path;
     this.props.router.push(firstPage);
-  }  
+  }
 
   render() {
     return (
       <div className="schemaform-intro">
-        <FormTitle title="Create test form with U.S. Forms System"/>
+        <FormTitle title="Create test form with U.S. Forms System" />
+        <h2>What is the purpose of this form?</h2>
         <p>Scaffolding to get any form started!</p>
         <ProgressButton
           onButtonClick={this.startForm}
           buttonText="Start Form"
           buttonClass="usa-button-primary schemaform-start-button"
-          afterText="»"/>
+          afterText="»"
+        />
       </div>
     );
   }
