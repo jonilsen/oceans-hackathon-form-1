@@ -16,9 +16,7 @@ export default function uiSchema(title = 'Phone') {
     },
     'ui:options': {
       widgetClassNames: 'home-phone va-input-medium-large',
-      inputType: 'tel',
-      expandUnder: 'hasMobilePhone',
-      expandUnderCondition: true
+      inputType: 'tel'
     }
   };
 }

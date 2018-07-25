@@ -51,16 +51,35 @@ const formConfig = {
               "ui:title":
                 "Do you have a U.S. Mobile Phone that can receive text messages?"
             },
-            phoneNumber: Object.assign(
-              {},
-              phoneUI("U.S. Mobile Phone Number"),
-              {
-                "ui:description": "*Message and data rates may apply"
+            'view:includePhoneNumber': {
+              'ui:options': {
+                expandUnder: 'hasMobilePhone',
+                expandUnderCondition: true
+              },
+              phoneNumber: Object.assign(
+                {},
+                phoneUI("U.S. Mobile Phone Number"),
+                {
+                  "ui:description": "*Message and data rates may apply"
+                }
+              )
+            },
+            'ui:options': {
+              updateSchema: (form, pageSchema) => {
+                if(form.hasMobilePhone) {
+                  pageSchema.properties['view:includePhoneNumber'].required = ['phoneNumber'];
+                } else {
+                  pageSchema.properties['view:includePhoneNumber'].required = [];
+                }
+                return pageSchema;
               }
-            )
+            }            
           },
           schema: {
             type: "object",
+            required: [
+              'emailAddress'
+            ],
             properties: {
               fullName,
               emailAddress: {
@@ -69,10 +88,15 @@ const formConfig = {
               hasMobilePhone: {
                 type: "boolean"
               },
-              phoneNumber: {
-                type: "string",
-                minLength: 10,
-                maxLength: 15
+              'view:includePhoneNumber': {
+                type: 'object',
+                properties: {
+                  phoneNumber: {
+                    type: "string",
+                    minLength: 10,
+                    maxLength: 15
+                  }
+                }
               }
             }
           }
