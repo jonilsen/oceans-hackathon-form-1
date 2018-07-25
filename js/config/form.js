@@ -34,7 +34,7 @@ const formConfig = {
             hasMobilePhone: {
               'ui:title': 'Do you have a U.S. Mobile Phone that can receive text messages?'
             },
-            phoneNumber: phoneUI('Phone Number')
+            phoneNumber: phoneUI('U.S. Mobile Phone Number (Message and data rates may apply)')
           },
           schema: {
             type: 'object',
