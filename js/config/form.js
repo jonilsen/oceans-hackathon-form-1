@@ -3,7 +3,7 @@ import fullName from '../definitions/fullName';
 
 import fullNameUI from 'us-forms-system/lib/js/definitions/fullName';
 import PhoneNumberWidget from 'us-forms-system/lib/js/widgets/PhoneNumberWidget';
-import phoneUI from 'us-forms-system/lib/js/definitions/phone';
+import phoneUI from '../definitions/phone';
 
 const formConfig = {
   title: 'Form',
@@ -27,12 +27,12 @@ const formConfig = {
           title: 'First Page',
           uiSchema: {
             fullName: fullNameUI,
-            internationalCB: {
-              'ui:title': 'International'
-            },
             emailAddress: {
               'ui:widget': 'email',
               'ui:title': 'Email Address'
+            },
+            hasMobilePhone: {
+              'ui:title': 'Do you have a U.S. Mobile Phone that can receive text messages?'
             },
             phoneNumber: phoneUI('Phone Number')
           },
@@ -40,16 +40,16 @@ const formConfig = {
             type: 'object',
             properties: {
               fullName,
-              internationalCB: {
-                type: 'boolean'
-              },
               emailAddress: {
                 type: 'string'
+              },
+              hasMobilePhone: {
+                type: 'boolean'
               },
               phoneNumber: {
                 type: 'string',
                 minLength: 10,
-                maxLength: 11
+                maxLength: 15
               }
             }
           }
