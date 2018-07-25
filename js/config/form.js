@@ -2,6 +2,8 @@ import Introduction from '../components/Introduction.jsx';
 import fullName from '../definitions/fullName';
 
 import fullNameUI from 'us-forms-system/lib/js/definitions/fullName';
+import PhoneNumberWidget from 'us-forms-system/lib/js/widgets/PhoneNumberWidget';
+import phoneUI from 'us-forms-system/lib/js/definitions/phone';
 
 const formConfig = {
   title: 'Form',
@@ -24,12 +26,31 @@ const formConfig = {
           path: 'first-section/first-page',
           title: 'First Page',
           uiSchema: {
-            fullName: fullNameUI
+            fullName: fullNameUI,
+            internationalCB: {
+              'ui:title': 'International'
+            },
+            emailAddress: {
+              'ui:widget': 'email',
+              'ui:title': 'Email Address'
+            },
+            phoneNumber: phoneUI('Phone Number')
           },
           schema: {
             type: 'object',
             properties: {
-              fullName
+              fullName,
+              internationalCB: {
+                type: 'boolean'
+              },
+              emailAddress: {
+                type: 'string'
+              },
+              phoneNumber: {
+                type: 'string',
+                minLength: 10,
+                maxLength: 11
+              }
             }
           }
         },
