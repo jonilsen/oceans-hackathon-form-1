@@ -20,16 +20,32 @@ const formConfig = {
   },
   chapters: {
     firstSection: {
-      title: "Enter Applicant/Petitioner Information",
+      title: "Applicant/Petitioner Information",
       pages: {
         firstPage: {
           path: "first-section/first-page",
           title: "First Page",
           uiSchema: {
-            fullName: fullNameUI,
+            fullName: {
+              first: {
+                "ui:title": "Given Name (First Name)"
+              },
+              last: {
+                "ui:title": "Family Name (Last Name)"
+              },
+              middle: {
+                "ui:title": "Middle Name (if applicable)"
+              },
+              suffix: {
+                "ui:title": "Suffix",
+                "ui:options": {
+                  widgetClassNames: "form-select-medium"
+                }
+              }
+            },
             emailAddress: {
               "ui:widget": "email",
-              "ui:title": "Email Address"
+              "ui:title": "Email address"
             },
             hasMobilePhone: {
               "ui:title":
@@ -40,8 +56,12 @@ const formConfig = {
                 expandUnder: 'hasMobilePhone',
                 expandUnderCondition: true
               },
-              phoneNumber: phoneUI(
-                "U.S. Mobile Phone Number (Message and data rates may apply)"
+              phoneNumber: Object.assign(
+                {},
+                phoneUI("U.S. Mobile Phone Number"),
+                {
+                  "ui:description": "*Message and data rates may apply"
+                }
               )
             },
             'ui:options': {
